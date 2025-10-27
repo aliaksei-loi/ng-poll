@@ -32,16 +32,16 @@ export default function SettingsPage() {
               </Label>
               <Select defaultValue="light">
                 <SelectTrigger id="theme">
-                  <SelectValue placeholder="Select theme" />
+                  <SelectValue placeholder="Выберите тему" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="light">Light</SelectItem>
-                  <SelectItem value="dark">Dark</SelectItem>
+                  <SelectItem value="light">Светлая</SelectItem>
+                  <SelectItem value="dark">Темная</SelectItem>
                 </SelectContent>
               </Select>
               <p className="text-sm text-muted-foreground">
-                Choose your preferred color scheme. System will match your
-                device settings.
+                Выберите предпочитаемую вами цветовую гамму. Система будет
+                соответствовать настройкам вашего устройства.
               </p>
             </div>
 
@@ -49,11 +49,11 @@ export default function SettingsPage() {
 
             <div className="space-y-3">
               <Label htmlFor="language" className="text-base">
-                 Язык
+                Язык
               </Label>
               <Select defaultValue="en">
                 <SelectTrigger id="language">
-                  <SelectValue placeholder="Select language" />
+                  <SelectValue placeholder="Выберите язык" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="en">English</SelectItem>
@@ -63,7 +63,7 @@ export default function SettingsPage() {
                 </SelectContent>
               </Select>
               <p className="text-sm text-muted-foreground">
-                Select your preferred language
+                Выберите предпочитаемый вами язык
               </p>
             </div>
 
@@ -72,10 +72,10 @@ export default function SettingsPage() {
             <div className="flex items-center justify-between">
               <div className="space-y-1">
                 <Label htmlFor="compact-mode" className="text-base">
-                  Compact Mode
+                  Компактный режим
                 </Label>
                 <p className="text-sm text-muted-foreground">
-                  Display more content on screen
+                  Отображать больше контента на экране
                 </p>
               </div>
               <Switch id="compact-mode" />
@@ -83,8 +83,8 @@ export default function SettingsPage() {
           </div>
 
           <div className="flex justify-end gap-3">
-            <Button variant="outline">Cancel</Button>
-            <Button>Save Changes</Button>
+            <Button variant="outline">На главную</Button>
+            <Button>Сохранить</Button>
           </div>
         </Card>
       </div>

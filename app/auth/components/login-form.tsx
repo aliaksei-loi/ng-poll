@@ -20,7 +20,7 @@ export const LoginForm = () => {
   useEffect(() => {
     if (state !== "error") return;
 
-    withDelay(5000, () => reset());
+    withDelay(5000, reset);
   }, [state, reset]);
 
   return (
