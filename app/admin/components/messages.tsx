@@ -20,10 +20,10 @@ export const Messages: React.FC<MessagesProps> = ({
   if (messages.length === 0) return <EmptyMessages />;
 
   return (
-    <FadeIn className="p-4 flex flex-col gap-5" once>
+    <div className="p-4 flex flex-col gap-5">
       {messages.map((message) => (
         <Message key={message.id} message={message} />
       ))}
-    </FadeIn>
+    </div>
   );
 };

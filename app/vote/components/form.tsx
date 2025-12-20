@@ -12,7 +12,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-import { voteForPerson, type Person } from "@/core/api";
+import { type Person } from "@/core/api";
+
+import { updatePersonCount, useDone } from "./utils";
 import React, { useState } from "react";
 
 type VoteFormProps = {
@@ -21,10 +23,17 @@ type VoteFormProps = {
 
 export const VoteForm: React.FC<VoteFormProps> = ({ persons }) => {
   const [loading, setIsLoading] = useState(false);
+  const [isDone, setIsDone] = useDone();
+
+  if (isDone)
+    return (
+      <div className="text-6xl text-center font-[family-name:var(--font-comforter-brush)] mt-10">
+        Спасибо больше за участии в голосовании
+      </div>
+    );
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     setIsLoading(true);
 
     const formData = new FormData(e.currentTarget);
@@ -39,10 +48,12 @@ export const VoteForm: React.FC<VoteFormProps> = ({ persons }) => {
 
     try {
       await Promise.all([
-        voteForPerson(leaderId, Number(leaderCount) + 1),
-        voteForPerson(girlId, Number(girlCount) + 1),
-        voteForPerson(boyId, Number(boyCount) + 1),
+        updatePersonCount(leaderId, Number(leaderCount) + 1),
+        updatePersonCount(girlId, Number(girlCount) + 1),
+        updatePersonCount(boyId, Number(boyCount) + 1),
       ]);
+
+      setIsDone();
     } catch (error) {
       console.error(error);
     } finally {
@@ -128,6 +139,7 @@ export const VoteForm: React.FC<VoteFormProps> = ({ persons }) => {
 
         <Button
           disabled={loading}
+          loading={loading}
           type="submit"
           variant="ghost"
           className="font-[family-name:var(--font-yeseva-one)] text-2xl mt-4"

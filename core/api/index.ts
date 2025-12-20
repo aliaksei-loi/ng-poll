@@ -115,14 +115,13 @@ export const getPersons = async () => {
   const { data } = await client
     .from("vote")
     .select("*")
+    .order("count", { ascending: false })
     .overrideTypes<Person[]>();
 
   return data;
 };
 
 export const voteForPerson = async (id: string, count: number) => {
-  console.log({ id, count });
-
   if (!client) await initializeClient();
 
   const { data } = await client
@@ -131,8 +130,6 @@ export const voteForPerson = async (id: string, count: number) => {
     .eq("id", id)
     .select()
     .overrideTypes<Person[]>();
-
-  console.log({ data });
 
   return data;
 };

@@ -2,7 +2,7 @@
 
 import { redirect } from "next/navigation";
 
-import { getMe, getMessages } from "@/core/api";
+import { getMe, getMessages, getPersons } from "@/core/api";
 
 export const getMeAction = async () => {
   const user = await getMe();
@@ -11,3 +11,4 @@ export const getMeAction = async () => {
 };
 
 export const getMessagesAction = getMessages;
+export const getVotesAction = getPersons;

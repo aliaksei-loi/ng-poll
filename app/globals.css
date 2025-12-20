@@ -135,6 +135,6 @@
 
 .neonBorderGold {
   /* border: 1px solid #ffd900cf !important; */
-  box-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 5px #ffd700,
-    0 0 10px #ffd700, 0 0 15px #ffd700, 0 0 20px #ffd700, 0 0 25px #ffd700;
+  box-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 5px #fff, 0 0 5px #ffd700,
+    0 0 10px #ffd700, 0 0 35px #ffd700, 0 0 5px #ffd700, 0 0 25px #ffd700;
 }
