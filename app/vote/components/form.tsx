@@ -16,6 +16,7 @@ import { type Person } from "@/core/api";
 
 import { updatePersonCount, useDone } from "./utils";
 import React, { useState } from "react";
+import { FadeIn } from "@/components/ui/fade-in";
 
 type VoteFormProps = {
   persons: Person[];
@@ -25,12 +26,13 @@ export const VoteForm: React.FC<VoteFormProps> = ({ persons }) => {
   const [loading, setIsLoading] = useState(false);
   const [isDone, setIsDone] = useDone();
 
-  if (isDone)
+  if (isDone) {
     return (
-      <div className="text-6xl text-center font-[family-name:var(--font-comforter-brush)] mt-10">
-        Спасибо больше за участии в голосовании
-      </div>
+      <FadeIn className="text-6xl text-center font-[family-name:var(--font-comforter-brush)] mt-10">
+        Спасибо большое за участие в голосовании!
+      </FadeIn>
     );
+  }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -68,17 +70,17 @@ export const VoteForm: React.FC<VoteFormProps> = ({ persons }) => {
     >
       <FieldGroup>
         <Field>
-          <FieldLabel htmlFor="leader">Выберите лидера</FieldLabel>
-          <Select required name="leader">
+          <FieldLabel htmlFor="boy">Выберите служителя года</FieldLabel>
+          <Select required name="boy">
             <SelectTrigger
-              id="leader"
+              id="boy"
               className="neonBorderGold border-1 bg-white text-stone-900"
             >
-              <SelectValue placeholder="Лидер года" />
+              <SelectValue placeholder="Служитель года" />
             </SelectTrigger>
             <SelectContent className="border-none">
               {persons
-                .filter((person) => person.role === "leader")
+                .filter((person) => person.role === "boy")
                 .map((person) => (
                   <SelectItem
                     key={person.id}
@@ -114,17 +116,17 @@ export const VoteForm: React.FC<VoteFormProps> = ({ persons }) => {
           </Select>
         </Field>
         <Field>
-          <FieldLabel htmlFor="boy">Выберите служителя года</FieldLabel>
-          <Select required name="boy">
+          <FieldLabel htmlFor="leader">Выберите лидера</FieldLabel>
+          <Select required name="leader">
             <SelectTrigger
-              id="boy"
+              id="leader"
               className="neonBorderGold border-1 bg-white text-stone-900"
             >
-              <SelectValue placeholder="Служитель года" />
+              <SelectValue placeholder="Лидер года" />
             </SelectTrigger>
             <SelectContent className="border-none">
               {persons
-                .filter((person) => person.role === "boy")
+                .filter((person) => person.role === "leader")
                 .map((person) => (
                   <SelectItem
                     key={person.id}
