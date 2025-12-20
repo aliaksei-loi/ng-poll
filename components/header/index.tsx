@@ -22,6 +22,10 @@ export function Header({ children }: PropsWithChildren) {
   const { theme, setTheme } = useTheme();
   const pathname = usePathname();
 
+  if (pathname === "/vote") return null;
+
+  console.log({ pathname });
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="px-4">

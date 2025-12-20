@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
-import { Analytics } from "@vercel/analytics/next";
-import { Geist, Geist_Mono } from "next/font/google";
+// import { Analytics } from "@vercel/analytics/next";
+import {
+  Geist,
+  Geist_Mono,
+  Comforter_Brush,
+  Yeseva_One,
+} from "next/font/google";
 
 import { Header } from "@/components/header";
 import { initializeClient } from "@/core/api";
@@ -17,6 +22,17 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const comforterBrush = Comforter_Brush({
+  variable: "--font-comforter-brush",
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
+const yesevaOne = Yeseva_One({
+  variable: "--font-yeseva-one",
+  weight: ["400"],
 });
 
 export const metadata: Metadata = {
@@ -38,7 +54,7 @@ export default async function RootLayout({
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${comforterBrush.variable} ${yesevaOne.variable} antialiased`}
       >
         <ThemeProvider
           attribute="class"
@@ -51,7 +67,7 @@ export default async function RootLayout({
           </Header>
           {children}
         </ThemeProvider>
-        <Analytics />
+        {/* <Analytics /> */}
       </body>
     </html>
   );

@@ -101,3 +101,38 @@ export const subscribeToMessages = (
       }
     )
     .subscribe();
+
+export type Person = {
+  id: string;
+  name: string;
+  role: "leader" | "girl" | "boy";
+  count: 0;
+};
+
+export const getPersons = async () => {
+  if (!client) await initializeClient();
+
+  const { data } = await client
+    .from("vote")
+    .select("*")
+    .overrideTypes<Person[]>();
+
+  return data;
+};
+
+export const voteForPerson = async (id: string, count: number) => {
+  console.log({ id, count });
+
+  if (!client) await initializeClient();
+
+  const { data } = await client
+    .from("vote")
+    .upsert({ count })
+    .eq("id", id)
+    .select()
+    .overrideTypes<Person[]>();
+
+  console.log({ data });
+
+  return data;
+};
