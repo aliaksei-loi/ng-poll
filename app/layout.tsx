@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-// import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics/next";
 import {
   Geist,
   Geist_Mono,
@@ -67,7 +67,7 @@ export default async function RootLayout({
           </Header>
           {children}
         </ThemeProvider>
-        {/* <Analytics /> */}
+        <Analytics />
       </body>
     </html>
   );

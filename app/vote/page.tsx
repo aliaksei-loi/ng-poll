@@ -1,12 +1,13 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-import { getPersons } from "@/core/api";
 import { VoteForm } from "./components/form";
 import { FadeIn } from "@/components/ui/fade-in";
 import { FallingStars } from "@/components/ui/falling-stars";
 
 export default async function VotePage() {
-  const persons = await getPersons();
+  // const persons = await getPersons();
+
+  // redirect
 
   return (
     <div className="relative flex min-h-svh w-full items-center justify-center bg-[url(/vote-bg.jpg)] bg-cover">
@@ -20,11 +21,7 @@ export default async function VotePage() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              {persons ? (
-                <VoteForm persons={persons} />
-              ) : (
-                <div>Что-то пошло не так...</div>
-              )}
+              <VoteForm persons={[]} />
             </CardContent>
           </Card>
         </FadeIn>

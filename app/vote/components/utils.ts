@@ -14,11 +14,11 @@ export const updatePersonCount = async (id: string, count: number) => {
 };
 
 export const useDone = () => {
-  const [isDone, setIsDone] = useState(false);
+  const [isDone, setIsDone] = useState(true);
 
-  useLayoutEffect(() => {
-    setIsDone(localStorage.getItem("done") === "true");
-  }, []);
+  // useLayoutEffect(() => {
+  //   setIsDone(localStorage.getItem("done") === "true");
+  // }, []);
 
   const setDone = () => {
     localStorage.setItem("done", "true");
