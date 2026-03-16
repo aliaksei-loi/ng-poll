@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 export const signOutAction = async () => {
   const isOk = await signOut();
 
-  if (!isOk) return "error";
+  if (!isOk) return;
 
   revalidatePath("/");
   redirect("/");

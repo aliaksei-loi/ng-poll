@@ -8,32 +8,31 @@ import Link from "next/link";
 
 export default function Page() {
   return (
-    <FadeIn className="container mx-auto p-4">
-      <div className="max-w-2xl mx-auto">
-        <Card className="overflow-hidden border-2">
-          <div className="p-8 md:p-12 text-center space-y-8">
-            <div className="space-y-4">
-              <h1 className="text-3xl md:text-5xl font-bold text-foreground text-balance">
-                У меня проблема...
-              </h1>
-            </div>
+    <FadeIn className="container mx-auto p-4 pt-8">
+      <div className="max-w-md mx-auto">
+        <Card className="overflow-hidden">
+          <div className="p-8 md:p-10 text-center space-y-6">
+            <h1 className="text-2xl md:text-3xl font-bold text-foreground text-balance">
+              У меня проблема...
+            </h1>
 
-            <FadeIn className="flex flex-col gap-4 justify-center items-center pt-4">
+            <FadeIn className="flex flex-col gap-3 justify-center items-center">
               <Link
                 href="https://t.me/SideswipeLoi"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full"
+                className="w-full flex justify-center"
               >
-                <Button size="lg" className="  gap-2 w-[240px]">
-                  <MessageCircle className="h-5 w-5" />
-                  Написать мне в телеграм
+                <Button size="lg" className="gap-2 w-[240px]">
+                  <MessageCircle className="h-4 w-4" />
+                  Написать в телеграм
                 </Button>
               </Link>
               <Button
-                variant="outline"
+                variant="ghost"
                 size="lg"
-                className="  bg-transparent w-[240px]"
+                className="w-[240px] text-muted-foreground"
+                asChild
               >
                 <Link href="/">На главную</Link>
               </Button>

@@ -28,8 +28,11 @@ export const VoteForm: React.FC<VoteFormProps> = ({ persons }) => {
 
   if (isDone) {
     return (
-      <FadeIn className="text-6xl text-center font-[family-name:var(--font-comforter-brush)] mt-10">
-        Спасибо большое за участие в голосовании!
+      <FadeIn className="text-center mt-10 space-y-4">
+        <p className="text-5xl md:text-6xl font-[family-name:var(--font-comforter-brush)]">
+          Спасибо большое за участие в голосовании!
+        </p>
+        <p className="text-white/40 text-sm">Ваш голос учтён</p>
       </FadeIn>
     );
   }
@@ -74,7 +77,7 @@ export const VoteForm: React.FC<VoteFormProps> = ({ persons }) => {
           <Select required name="boy">
             <SelectTrigger
               id="boy"
-              className="neonBorderGold border-1 bg-white text-stone-900"
+              className="neonBorderGold border bg-white/95 text-stone-900 backdrop-blur-sm"
             >
               <SelectValue placeholder="Служитель года" />
             </SelectTrigger>
@@ -97,7 +100,7 @@ export const VoteForm: React.FC<VoteFormProps> = ({ persons }) => {
           <Select required name="girl">
             <SelectTrigger
               id="girl"
-              className="neonBorderGold border-1 bg-white text-stone-900"
+              className="neonBorderGold border bg-white/95 text-stone-900 backdrop-blur-sm"
             >
               <SelectValue placeholder="Служительница года" />
             </SelectTrigger>
@@ -120,7 +123,7 @@ export const VoteForm: React.FC<VoteFormProps> = ({ persons }) => {
           <Select required name="leader">
             <SelectTrigger
               id="leader"
-              className="neonBorderGold border-1 bg-white text-stone-900"
+              className="neonBorderGold border bg-white/95 text-stone-900 backdrop-blur-sm"
             >
               <SelectValue placeholder="Лидер года" />
             </SelectTrigger>
@@ -143,8 +146,7 @@ export const VoteForm: React.FC<VoteFormProps> = ({ persons }) => {
           disabled={loading}
           loading={loading}
           type="submit"
-          variant="ghost"
-          className="font-[family-name:var(--font-yeseva-one)] text-2xl mt-4"
+          className="font-[family-name:var(--font-yeseva-one)] text-xl mt-6 h-12 bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-black border-none shadow-lg shadow-amber-500/20 transition-all"
         >
           Отправить голос
         </Button>

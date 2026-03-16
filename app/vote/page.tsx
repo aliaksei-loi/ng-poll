@@ -10,17 +10,18 @@ export default async function VotePage() {
   // redirect
 
   return (
-    <div className="relative flex min-h-svh w-full items-center justify-center bg-[url(/vote-bg.jpg)] bg-cover">
+    <div className="relative flex min-h-svh w-full items-center justify-center bg-[url(/vote-bg.jpg)] bg-cover bg-center">
       <FallingStars />
       <div className="w-full h-full relative z-10">
         <FadeIn>
-          <Card className="bg-black/60 border-none rounded-none h-full min-h-svh text-white">
-            <CardHeader>
-              <CardTitle className="text-6xl text-center font-[family-name:var(--font-comforter-brush)]">
+          <Card className="bg-black/70 backdrop-blur-sm border-none rounded-none h-full min-h-svh text-white">
+            <CardHeader className="pt-12 pb-4">
+              <CardTitle className="text-5xl md:text-6xl text-center font-[family-name:var(--font-comforter-brush)] tracking-wide">
                 Голос Скинии
               </CardTitle>
+              <p className="text-center text-white/50 text-sm mt-2">Выберите лучших</p>
             </CardHeader>
-            <CardContent>
+            <CardContent className="max-w-lg mx-auto">
               <VoteForm persons={[]} />
             </CardContent>
           </Card>

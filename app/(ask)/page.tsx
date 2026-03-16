@@ -6,20 +6,20 @@ import { AskForm } from "./components/ask-form";
 
 export default function AskPage() {
   return (
-    <WavyBackground className="w-full">
-      <div className=" max-w-2xl mx-auto ">
+    <WavyBackground className="w-full" waveOpacity={0.4} blur={25}>
+      <div className="max-w-2xl mx-auto px-4">
         <FadeIn variant="scale" className="flex justify-center gap-2 p-2">
           <LayoutTextFlip
             text="Спроси меня "
             words={[
-              { text: "о Боге", className: "text-[#38bdf8]" },
-              { text: "об Иисусе", className: "text-[#818cf8]" },
-              { text: "о Жизни", className: "text-[#c084fc]" },
-              { text: "о Мире", className: "text-[#e879f9]" },
+              { text: "о Боге", className: "text-[#818cf8]" },
+              { text: "об Иисусе", className: "text-[#6366f1]" },
+              { text: "о Жизни", className: "text-[#a78bfa]" },
+              { text: "о Мире", className: "text-[#8b5cf6]" },
             ]}
           />
         </FadeIn>
-        <div className="mt-6 px-4">
+        <div className="mt-8">
           <AskForm />
         </div>
       </div>

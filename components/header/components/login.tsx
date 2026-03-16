@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-import { ArrowRightToLine, LogOut } from "lucide-react";
+import { LogOut, LogIn } from "lucide-react";
 
-import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
 
 import { signOutAction } from "./actions";
 import { getMe } from "@/core/api";
@@ -11,16 +11,27 @@ export async function HeaderLoginAction() {
   const user = await getMe();
 
   return user ? (
-    <DropdownMenuItem variant="destructive" onClick={signOutAction}>
-      <LogOut className="mr-2 size-4" />
-      Выйти
-    </DropdownMenuItem>
+    <form action={signOutAction}>
+      <Button
+        type="submit"
+        size="icon"
+        variant="ghost"
+        className="size-8 rounded-lg text-muted-foreground hover:text-destructive"
+      >
+        <LogOut className="size-4" />
+        <span className="sr-only">Выйти</span>
+      </Button>
+    </form>
   ) : (
-    <DropdownMenuItem asChild>
-      <Link href="/auth" className="cursor-pointer">
-        <ArrowRightToLine className="mr-2 size-4" />
-        Войти
-      </Link>
-    </DropdownMenuItem>
+    <Link href="/auth">
+      <Button
+        size="icon"
+        variant="ghost"
+        className="size-8 rounded-lg"
+      >
+        <LogIn className="size-4" />
+        <span className="sr-only">Войти</span>
+      </Button>
+    </Link>
   );
 }

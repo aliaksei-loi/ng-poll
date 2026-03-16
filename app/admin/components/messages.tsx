@@ -20,7 +20,7 @@ export const Messages: React.FC<MessagesProps> = ({
   if (messages.length === 0) return <EmptyMessages />;
 
   return (
-    <div className="p-4 flex flex-col gap-5">
+    <div className="flex flex-col divide-y divide-border/50">
       {messages.map((message) => (
         <Message key={message.id} message={message} />
       ))}

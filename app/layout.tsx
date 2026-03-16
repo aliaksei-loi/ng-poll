@@ -7,12 +7,14 @@ import {
   Yeseva_One,
 } from "next/font/google";
 
+import { Suspense } from "react";
+
 import { Header } from "@/components/header";
+import { HeaderLoginAction } from "@/components/header/components/login";
 import { initializeClient } from "@/core/api";
 import { ThemeProvider } from "@/core/theme/theme-provider";
 
 import "./globals.css";
-import { HeaderLoginAction } from "@/components/header/components/login";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -63,7 +65,9 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <Header>
-            <HeaderLoginAction />
+            <Suspense>
+              <HeaderLoginAction />
+            </Suspense>
           </Header>
           {children}
         </ThemeProvider>

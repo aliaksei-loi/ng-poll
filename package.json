@@ -6,8 +6,7 @@
     "dev": "bun --bun next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "test": "playwright test"
+    "lint": "eslint"
   },
   "dependencies": {
     "@radix-ui/react-dropdown-menu": "^2.1.16",
@@ -34,7 +33,6 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@playwright/test": "^1.55.1",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
