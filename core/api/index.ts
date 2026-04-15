@@ -24,8 +24,11 @@ export const getMe = async () => {
 export const signIn = async (password: string) => {
   await initializeClient();
 
+  const email = process.env.ADMIN_EMAIL;
+  if (!email) throw new Error("ADMIN_EMAIL env var is not set");
+
   const { data } = await client.auth.signInWithPassword({
-    email: "test@email.com",
+    email,
     password,
   });
 

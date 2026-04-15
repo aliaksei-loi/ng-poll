@@ -14,7 +14,8 @@ import {
 
 import { type Person } from "@/core/api";
 
-import { updatePersonCount, useDone } from "./utils";
+import { voteAction } from "../actions";
+import { useDone } from "./utils";
 import React, { useState } from "react";
 import { FadeIn } from "@/components/ui/fade-in";
 
@@ -43,20 +44,12 @@ export const VoteForm: React.FC<VoteFormProps> = ({ persons }) => {
 
     const formData = new FormData(e.currentTarget);
 
-    const leader = formData.get("leader") as string;
-    const girl = formData.get("girl") as string;
-    const boy = formData.get("boy") as string;
-
-    const [leaderId, leaderCount] = leader?.split("-");
-    const [girlId, girlCount] = girl?.split("-");
-    const [boyId, boyCount] = boy?.split("-");
+    const leaderId = formData.get("leader") as string;
+    const girlId = formData.get("girl") as string;
+    const boyId = formData.get("boy") as string;
 
     try {
-      await Promise.all([
-        updatePersonCount(leaderId, Number(leaderCount) + 1),
-        updatePersonCount(girlId, Number(girlCount) + 1),
-        updatePersonCount(boyId, Number(boyCount) + 1),
-      ]);
+      await voteAction([leaderId, girlId, boyId]);
 
       setIsDone();
     } catch (error) {
@@ -87,7 +80,7 @@ export const VoteForm: React.FC<VoteFormProps> = ({ persons }) => {
                 .map((person) => (
                   <SelectItem
                     key={person.id}
-                    value={person.id + "-" + person.count}
+                    value={person.id}
                   >
                     {person.name}
                   </SelectItem>
@@ -110,7 +103,7 @@ export const VoteForm: React.FC<VoteFormProps> = ({ persons }) => {
                 .map((person) => (
                   <SelectItem
                     key={person.id}
-                    value={person.id + "-" + person.count}
+                    value={person.id}
                   >
                     {person.name}
                   </SelectItem>
@@ -133,7 +126,7 @@ export const VoteForm: React.FC<VoteFormProps> = ({ persons }) => {
                 .map((person) => (
                   <SelectItem
                     key={person.id}
-                    value={person.id + "-" + person.count}
+                    value={person.id}
                   >
                     {person.name}
                   </SelectItem>
