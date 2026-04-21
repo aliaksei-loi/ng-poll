@@ -22,17 +22,30 @@ export const getMe = async () => {
 };
 
 export const signIn = async (password: string) => {
-  await initializeClient();
+  try {
+    await initializeClient();
 
-  const email = process.env.ADMIN_EMAIL;
-  if (!email) throw new Error("ADMIN_EMAIL env var is not set");
+    const email = process.env.ADMIN_EMAIL;
+    if (!email) {
+      console.error("ADMIN_EMAIL env var is not set");
+      return false;
+    }
 
-  const { data } = await client.auth.signInWithPassword({
-    email,
-    password,
-  });
+    const { data, error } = await client.auth.signInWithPassword({
+      email,
+      password,
+    });
 
-  return Boolean(data.user);
+    if (error) {
+      console.error("signIn error:", error.message);
+      return false;
+    }
+
+    return Boolean(data.user);
+  } catch (err) {
+    console.error("signIn unexpected error:", err);
+    return false;
+  }
 };
 
 export const signOut = async () => {
